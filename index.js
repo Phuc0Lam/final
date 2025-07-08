@@ -55,7 +55,7 @@ numbers = [
     color: "#84cc16",
   },
   {
-    number: "",
+    number: null,
     bgColor: "black",
     color: "black",
   },
@@ -72,7 +72,6 @@ function renderdata(numbers) {
     console.log(item.number);
     container.innerHTML += `<div style="color: ${item.color}; background-color: ${item.bgColor} ;" class="number">${item.number} </div>`;
   }
-  
 }
 
 function shuffle(arr) {
@@ -85,12 +84,13 @@ function shuffle(arr) {
 function start() {
     const startbt=document.getElementById("start")
     const endbt =document.getElementById("end")
-    let shuffleNumbers = numbers
     startbt.style.display = "none";
     endbt.style.display="block";
   for (let i = 0; i < 100; i++) {
-    shuffle(shuffleNumbers);
+    shuffle(numbers);
   }
   deletedata();
-  renderdata(shuffleNumbers);
+  renderdata(numbers);
 }
+
+ 
