@@ -36,6 +36,10 @@ body {
   display: none;
   background-color: red;
 }
+#restart {
+  display: none;
+  background-color: blue;
+}
 .number {
   background-color: black;
   color: black;

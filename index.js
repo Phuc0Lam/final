@@ -62,6 +62,33 @@ numbers = [
 ];
 renderdata(numbers);
 
+// Đồng hồ
+let count = 0; // đơn vị: giây
+    let intervalId = null;
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function updateDisplay() {
+      document.getElementById("timer").innerText = formatTime(count);
+    }
+
+    function startTimer() {
+      if (intervalId ) return; // tránh chạy nhiều lần
+      intervalId = setInterval(() => {
+        count++;
+        updateDisplay();
+      }, 1000);
+    }
+    function stopTimer() {
+      clearInterval(intervalId);
+      intervalId = null;
+      const stoppedText = `${formatTime(count)}`;
+      document.getElementById("timer").innerText = stoppedText;
+    }
 function deletedata(){
     const container = document.getElementById("container-content");
     container.innerHTML="";
@@ -82,15 +109,31 @@ function shuffle(arr) {
 }
 
 function start() {
+    startTimer();
     const startbt=document.getElementById("start")
     const endbt =document.getElementById("end")
+    const restartbt =document.getElementById("restart")
     startbt.style.display = "none";
     endbt.style.display="block";
+    restartbt.style.display = "none";
   for (let i = 0; i < 100; i++) {
     shuffle(numbers);
   }
   deletedata();
   renderdata(numbers);
 }
+function end() {
+    const startbt=document.getElementById("start")
+    const endbt =document.getElementById("end")
+    const restartbt =document.getElementById("restart")
+    startbt.style.display = "none";
+    endbt.style.display="none";
+    restartbt.style.display = "block";
+    stopTimer
+}
+function restart() {
+    start();
+}
+
 
  
