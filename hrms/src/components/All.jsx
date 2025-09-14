@@ -9,7 +9,6 @@ const All = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // State quản lý input form
   const [task, setTask] = useState("");
 
 
@@ -54,7 +53,7 @@ const All = () => {
           className="border border-gray-300 rounded-lg p-2 w-[250px]"
           type="text"
           value={task}
-          onChange={(e) => setTask(e.target.value)} // Cập nhật state khi gõ
+          onChange={(e) => setTask(e.target.value)} 
           placeholder="Add Details"
         />
         <button
@@ -65,7 +64,6 @@ const All = () => {
         </button>
       </form>
 
-      {/* Hiển thị danh sách task */}
       <div className="mt-5 w-[400px]">
         {tasks.map((t) => (
           <div className="flex items-center gap-[10px]">
